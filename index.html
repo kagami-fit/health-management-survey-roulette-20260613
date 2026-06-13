@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>健康経営セミナー アンケート＆抽選 | BODY PALETTE</title>
+    <meta name="description" content="健康経営セミナー参加者向けのアンケート回答後に、特典抽選ルーレットへ進むスマホ専用サイト。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&amp;display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="./assets/body-palette-logo.webp">
+    <link rel="preload" as="image" href="./assets/body-palette-fv-bg.webp">
+    <link rel="preload" as="image" href="./assets/body-palette-main.webp">
+    <link rel="stylesheet" href="./styles.css?v=20260613-survey-live">
+  </head>
+  <body>
+    <canvas class="confetti-canvas" id="confettiCanvas" aria-hidden="true"></canvas>
+
+    <div class="photo-backdrop" aria-hidden="true">
+      <img src="./assets/body-palette-fv-bg.webp" alt="">
+    </div>
+
+    <div class="ambient" aria-hidden="true">
+      <div class="beam beam-a"></div>
+      <div class="beam beam-b"></div>
+      <div class="beam beam-c"></div>
+      <div class="ticker ticker-top">BODY PALETTE HEALTH MANAGEMENT ENTRY FORM</div>
+      <div class="ticker ticker-bottom">SURVEY COMPLETE LIMITED ROULETTE CUSTOM SESSION</div>
+    </div>
+
+    <main class="experience" aria-label="健康経営セミナー アンケート＆抽選">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="BODY PALETTE">
+          <img src="./assets/body-palette-logo.webp" alt="">
+          <span>BODY PALETTE</span>
+        </a>
+        <div class="event-badges" aria-label="イベント情報">
+          <span>健康経営セミナー</span>
+          <span>アンケート回答者限定</span>
+        </div>
+      </header>
+
+      <section class="screen survey-screen" id="surveyScreen" aria-labelledby="surveyTitle">
+        <section class="survey-card">
+          <div class="survey-copy">
+            <p class="eyebrow">BODY PALETTE ENTRY FORM</p>
+            <h1 id="surveyTitle">アンケートにご回答ください</h1>
+            <p>送信後、そのまま特典抽選ルーレットへ進みます。</p>
+          </div>
+
+          <div class="survey-visual" aria-hidden="true">
+            <img src="./assets/body-palette-main.webp" alt="">
+          </div>
+
+          <form class="survey-form" id="surveyForm">
+            <label class="form-field">
+              <span>名前</span>
+              <input id="fullName" name="fullName" type="text" autocomplete="name" required placeholder="山田 太郎">
+            </label>
+
+            <label class="form-field">
+              <span>会社名</span>
+              <input id="companyName" name="companyName" type="text" autocomplete="organization" required placeholder="株式会社〇〇">
+            </label>
+
+            <label class="form-field">
+              <span>メールアドレス <small>任意</small></span>
+              <input id="email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="name@example.com">
+            </label>
+
+            <button class="submit-button" id="surveySubmit" type="submit">
+              回答してルーレットへ
+            </button>
+            <p class="form-status" id="formStatus" aria-live="polite"></p>
+          </form>
+
+          <p class="privacy-note">入力内容は、展示会後のご連絡と健康経営セミナー運営のために使用します。</p>
+        </section>
+      </section>
+
+      <section class="screen roulette-screen" id="rouletteScreen" hidden>
+        <section class="hero-grid">
+          <section class="roulette-stage" id="rouletteStage" aria-labelledby="mainTitle">
+            <div class="stage-copy">
+              <p class="eyebrow">BODY PALETTE THANKS ROULETTE</p>
+              <h1 id="mainTitle">ご回答ありがとうございます</h1>
+              <p>アンケート回答者限定の特典抽選です。中央のボタンをタップしてください。</p>
+            </div>
+
+            <div class="visual-ribbon" aria-hidden="true">
+              <img class="visual-ribbon-main" src="./assets/body-palette-main.webp" alt="">
+              <img src="./assets/body-palette-mockup.webp" alt="">
+              <img class="visual-ribbon-contain" src="./assets/body-palette-custom-session.webp" alt="">
+            </div>
+
+            <div class="roulette-wrap" aria-live="polite">
+              <div class="pointer" aria-hidden="true">
+                <span></span>
+              </div>
+              <div class="wheel-shadow" aria-hidden="true"></div>
+              <div class="wheel" id="wheel" style="--wheel-rotation: 0deg;">
+                <div class="wheel-sheen" aria-hidden="true"></div>
+                <div class="segment-label segment-custom">
+                  <strong>カスタム</strong>
+                  <span>セッション</span>
+                </div>
+                <div class="segment-label segment-protein">
+                  <strong>プロテイン</strong>
+                  <span>プレゼント</span>
+                </div>
+                <div class="segment-label segment-executive">
+                  <strong>エグゼクティブ</strong>
+                  <span>PT体験</span>
+                </div>
+                <div class="segment-label segment-pilates">
+                  <strong>パーソナル</strong>
+                  <span>ピラティス</span>
+                </div>
+              </div>
+              <button class="spin-button" id="spinButton" type="button" disabled>
+                <span class="spin-core">タップで<br>抽選</span>
+                <span class="spin-ring" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div class="staff-check completion-strip">
+              <input type="checkbox" id="surveyCheck" checked hidden>
+              <p id="statusText">アンケート送信が完了しました。中央のボタンをタップしてください。</p>
+            </div>
+          </section>
+
+          <aside class="side-rail" aria-label="賞品一覧と当選結果">
+            <section class="result-ticket" id="resultTicket" hidden>
+              <div class="ticket-light" aria-hidden="true"></div>
+              <div class="ticket-media">
+                <img src="./assets/body-palette-custom-session.webp" alt="カスタムセッションのオンライン指導の様子">
+              </div>
+              <p class="ticket-kicker">SPECIAL BENEFIT</p>
+              <h2>カスタムセッション</h2>
+              <p>貴社の健康経営課題に合わせて、最適な改善テーマを一緒に設計します。</p>
+              <div class="ticket-code">CUSTOM SESSION</div>
+              <div class="session-detail">
+                <h3>カスタムセッションとは</h3>
+                <p>業種・働き方・参加者層に合わせて、BODY PALETTEがテーマを設計する企業専用セッションです。</p>
+                <ul>
+                  <li>健康課題や目的に合わせた内容を個別設計</li>
+                  <li>肩こり・姿勢・疲労・運動習慣などのテーマに対応</li>
+                  <li>オンライン／会場実施の相談につなげられます</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="prize-board">
+              <div class="board-heading">
+                <p>BENEFIT LINEUP</p>
+                <h2>本日の特典</h2>
+              </div>
+              <ol class="prize-list" id="prizeList">
+                <li data-prize-id="custom-session">
+                  <span class="prize-rank">特典</span>
+                  <strong>カスタムセッション</strong>
+                  <small>企業課題に合わせた個別設計セッション</small>
+                </li>
+                <li data-prize-id="protein">
+                  <span class="prize-rank">特典</span>
+                  <strong>プロテインプレゼント</strong>
+                  <small>日々のコンディショニングを支援</small>
+                </li>
+                <li data-prize-id="executive-training">
+                  <span class="prize-rank">特典</span>
+                  <strong>エグゼクティブパーソナルトレーニング体験チケット</strong>
+                  <small>経営層向けの集中トレーニング体験</small>
+                </li>
+                <li data-prize-id="personal-pilates">
+                  <span class="prize-rank">特典</span>
+                  <strong>パーソナルピラティス体験チケット</strong>
+                  <small>姿勢と動作を整えるマンツーマン体験</small>
+                </li>
+              </ol>
+            </section>
+
+            <section class="brand-visual-card" aria-label="BODY PALETTE ビジュアル">
+              <div class="brand-visual-main">
+                <img src="./assets/body-palette-main.webp" alt="オフィスで笑顔のスタッフが並んでいる様子">
+              </div>
+              <div class="brand-visual-grid">
+                <img src="./assets/body-palette-mockup.webp" alt="健康状態や分析グラフを表示した画面">
+                <img src="./assets/body-palette-onsite-session.webp" alt="オンサイトセッションの様子">
+                <img src="./assets/body-palette-seminar.webp" alt="講演中に参加者へ語りかける様子">
+              </div>
+            </section>
+          </aside>
+        </section>
+      </section>
+    </main>
+
+    <div class="victory-overlay" id="victoryOverlay" aria-hidden="true">
+      <div class="victory-card">
+        <p>SPECIAL WINNER</p>
+        <strong>カスタムセッション</strong>
+        <span>おめでとうございます</span>
+        <div class="victory-session">
+          <img src="./assets/body-palette-custom-session.webp" alt="カスタムセッションのオンライン指導の様子">
+          <div>
+            <h2>カスタムセッションとは</h2>
+            <p>業種・働き方・参加者層に合わせて、BODY PALETTEがテーマを設計する企業専用セッションです。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./app.js?v=20260613-survey-live"></script>
+  </body>
+</html>
