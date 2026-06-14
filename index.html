@@ -12,7 +12,7 @@
     <link rel="preload" as="image" href="./assets/body-palette-logo.webp">
     <link rel="preload" as="image" href="./assets/body-palette-fv-bg.webp">
     <link rel="preload" as="image" href="./assets/body-palette-main.webp">
-    <link rel="stylesheet" href="./styles.css?v=20260614-survey-v3">
+    <link rel="stylesheet" href="./styles.css?v=20260614-survey-v4">
   </head>
   <body>
     <canvas class="confetti-canvas" id="confettiCanvas" aria-hidden="true"></canvas>
@@ -69,14 +69,14 @@
               <input id="email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="name@example.com">
             </label>
 
-            <fieldset class="question-field">
-              <legend>
+            <section class="question-field" role="group" aria-labelledby="satisfactionQuestion">
+              <div class="question-heading">
                 <span class="question-meta">
                   <span class="question-number">Q1</span>
                   <span class="question-required">必須</span>
                 </span>
-                <span class="question-title">満足度を教えて下さい</span>
-              </legend>
+                <span class="question-title" id="satisfactionQuestion">満足度を教えて下さい</span>
+              </div>
               <p class="question-helper">5が最も高い評価です。</p>
               <div class="rating-options">
                 <label>
@@ -100,16 +100,16 @@
                   <span>1</span>
                 </label>
               </div>
-            </fieldset>
+            </section>
 
-            <fieldset class="question-field">
-              <legend>
+            <section class="question-field" role="group" aria-labelledby="healthActionQuestion">
+              <div class="question-heading">
                 <span class="question-meta">
                   <span class="question-number">Q2</span>
                   <span class="question-required">必須</span>
                 </span>
-                <span class="question-title">従業員の健康課題に対して、現在どの程度取り組まれていますか？</span>
-              </legend>
+                <span class="question-title" id="healthActionQuestion">従業員の健康課題に対して、現在どの程度取り組まれていますか？</span>
+              </div>
               <div class="choice-options">
                 <label>
                   <input type="radio" name="healthAction" value="十分に取り組んでおり、健康経営優良法人認定も取得している" required>
@@ -132,16 +132,16 @@
                   <span>現時点では取り組んでいない</span>
                 </label>
               </div>
-            </fieldset>
+            </section>
 
-            <fieldset class="question-field">
-              <legend>
+            <section class="question-field" role="group" aria-labelledby="healthSatisfactionQuestion">
+              <div class="question-heading">
                 <span class="question-meta">
                   <span class="question-number">Q3</span>
                   <span class="question-required">必須</span>
                 </span>
-                <span class="question-title">自社の健康経営の取り組みに満足しているか？</span>
-              </legend>
+                <span class="question-title" id="healthSatisfactionQuestion">自社の健康経営の取り組みに満足しているか？</span>
+              </div>
               <div class="choice-options">
                 <label>
                   <input type="radio" name="healthSatisfaction" value="満足している" required>
@@ -164,7 +164,7 @@
                   <span>不満である</span>
                 </label>
               </div>
-            </fieldset>
+            </section>
 
             <label class="question-field textarea-question">
               <span class="question-heading">
@@ -318,6 +318,6 @@
       </div>
     </div>
 
-    <script src="./app.js?v=20260614-survey-v3"></script>
+    <script src="./app.js?v=20260614-survey-v4"></script>
   </body>
 </html>

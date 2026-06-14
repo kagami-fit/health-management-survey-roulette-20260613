@@ -388,30 +388,25 @@ a {
 .question-field {
   position: relative;
   display: grid;
-  gap: 12px;
+  min-width: 0;
+  gap: 13px;
   margin: 0;
-  padding: 14px;
-  border: 1px solid rgba(220, 74, 137, 0.14);
+  padding: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(220, 74, 137, 0.12);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 10px 24px rgba(220, 74, 137, 0.08);
-}
-
-.question-field legend {
-  float: left;
-  display: grid;
-  gap: 7px;
-  width: 100%;
-  padding: 0;
-}
-
-.question-field legend + * {
-  clear: both;
+  background:
+    linear-gradient(90deg, rgba(220, 74, 137, 0.12), rgba(255, 161, 94, 0.08)) 0 0 / 100% 4px no-repeat,
+    rgba(255, 255, 255, 0.94);
+  box-shadow: 0 12px 28px rgba(220, 74, 137, 0.08);
 }
 
 .question-heading {
   display: grid;
-  gap: 7px;
+  min-width: 0;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(220, 74, 137, 0.1);
 }
 
 .question-meta {
@@ -458,23 +453,28 @@ a {
 
 .question-title {
   display: block;
+  min-width: 0;
   color: var(--ink);
   font-size: 15px;
   font-weight: 900;
-  line-height: 1.55;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
 .question-helper {
-  margin: -4px 0 0;
+  margin: -3px 0 0;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  background: rgba(255, 248, 251, 0.82);
   color: var(--muted);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.5;
 }
 
 .rating-options {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 7px;
 }
 
@@ -487,6 +487,7 @@ a {
 .choice-options label {
   position: relative;
   display: grid;
+  min-width: 0;
   cursor: pointer;
 }
 
@@ -499,16 +500,18 @@ a {
 
 .rating-options span,
 .choice-options span {
+  position: relative;
   display: grid;
   align-items: center;
   min-height: 44px;
   border: 1px solid rgba(220, 74, 137, 0.16);
-  border-radius: 12px;
+  border-radius: var(--radius);
   background: #fff;
   color: var(--ink);
   font-size: 12px;
   font-weight: 700;
   line-height: 1.45;
+  overflow-wrap: anywhere;
   transition: border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease, color 0.16s ease;
 }
 
@@ -521,7 +524,28 @@ a {
 }
 
 .choice-options span {
-  padding: 10px 11px;
+  padding: 11px 12px 11px 36px;
+  font-size: 13px;
+}
+
+.choice-options span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 13px;
+  width: 11px;
+  height: 11px;
+  border: 2px solid rgba(220, 74, 137, 0.28);
+  border-radius: 50%;
+  background: #fff;
+  transform: translateY(-50%);
+}
+
+.choice-options input:checked + span::before {
+  border-color: var(--pink-strong);
+  background:
+    radial-gradient(circle, var(--pink-strong) 0 42%, transparent 47%),
+    #fff;
 }
 
 .rating-options input:checked + span,
