@@ -12,7 +12,7 @@
     <link rel="preload" as="image" href="./assets/body-palette-logo.webp">
     <link rel="preload" as="image" href="./assets/body-palette-fv-bg.webp">
     <link rel="preload" as="image" href="./assets/body-palette-main.webp">
-    <link rel="stylesheet" href="./styles.css?v=20260614-survey-v2">
+    <link rel="stylesheet" href="./styles.css?v=20260614-survey-v3">
   </head>
   <body>
     <canvas class="confetti-canvas" id="confettiCanvas" aria-hidden="true"></canvas>
@@ -70,7 +70,14 @@
             </label>
 
             <fieldset class="question-field">
-              <legend>満足度を教えて下さい</legend>
+              <legend>
+                <span class="question-meta">
+                  <span class="question-number">Q1</span>
+                  <span class="question-required">必須</span>
+                </span>
+                <span class="question-title">満足度を教えて下さい</span>
+              </legend>
+              <p class="question-helper">5が最も高い評価です。</p>
               <div class="rating-options">
                 <label>
                   <input type="radio" name="satisfaction" value="5" required>
@@ -96,7 +103,13 @@
             </fieldset>
 
             <fieldset class="question-field">
-              <legend>従業員の健康課題に対して、現在どの程度取り組まれていますか？</legend>
+              <legend>
+                <span class="question-meta">
+                  <span class="question-number">Q2</span>
+                  <span class="question-required">必須</span>
+                </span>
+                <span class="question-title">従業員の健康課題に対して、現在どの程度取り組まれていますか？</span>
+              </legend>
               <div class="choice-options">
                 <label>
                   <input type="radio" name="healthAction" value="十分に取り組んでおり、健康経営優良法人認定も取得している" required>
@@ -122,7 +135,13 @@
             </fieldset>
 
             <fieldset class="question-field">
-              <legend>自社の健康経営の取り組みに満足しているか？</legend>
+              <legend>
+                <span class="question-meta">
+                  <span class="question-number">Q3</span>
+                  <span class="question-required">必須</span>
+                </span>
+                <span class="question-title">自社の健康経営の取り組みに満足しているか？</span>
+              </legend>
               <div class="choice-options">
                 <label>
                   <input type="radio" name="healthSatisfaction" value="満足している" required>
@@ -147,8 +166,14 @@
               </div>
             </fieldset>
 
-            <label class="form-field">
-              <span>本セミナーに対してご意見・ご要望がございましたら、ご自由にお書きください。 <small>任意</small></span>
+            <label class="question-field textarea-question">
+              <span class="question-heading">
+                <span class="question-meta">
+                  <span class="question-number">Q4</span>
+                  <span class="question-optional">任意</span>
+                </span>
+                <span class="question-title">本セミナーに対してご意見・ご要望がございましたら、ご自由にお書きください。</span>
+              </span>
               <textarea id="seminarFeedback" name="seminarFeedback" rows="4" placeholder="ご意見・ご要望をご入力ください"></textarea>
             </label>
 
@@ -293,6 +318,6 @@
       </div>
     </div>
 
-    <script src="./app.js?v=20260614-survey-v2"></script>
+    <script src="./app.js?v=20260614-survey-v3"></script>
   </body>
 </html>
