@@ -14,6 +14,10 @@ function doPost(e) {
       cleanText_(payload.fullName),
       cleanText_(payload.companyName),
       cleanText_(payload.email),
+      cleanText_(payload.satisfaction),
+      cleanText_(payload.healthAction),
+      cleanText_(payload.healthSatisfaction),
+      cleanText_(payload.seminarFeedback),
       cleanText_(payload.userAgent),
       cleanText_(payload.referrer),
     ]);
@@ -33,7 +37,7 @@ function parsePayload_(e) {
     throw new Error("Missing request body");
   }
   const payload = JSON.parse(e.postData.contents);
-  if (!payload.fullName || !payload.companyName) {
+  if (!payload.fullName || !payload.companyName || !payload.satisfaction || !payload.healthAction || !payload.healthSatisfaction) {
     throw new Error("Required field missing");
   }
   return payload;

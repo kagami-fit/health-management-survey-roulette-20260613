@@ -12,7 +12,7 @@
     <link rel="preload" as="image" href="./assets/body-palette-logo.webp">
     <link rel="preload" as="image" href="./assets/body-palette-fv-bg.webp">
     <link rel="preload" as="image" href="./assets/body-palette-main.webp">
-    <link rel="stylesheet" href="./styles.css?v=20260613-survey-live">
+    <link rel="stylesheet" href="./styles.css?v=20260614-survey-v2">
   </head>
   <body>
     <canvas class="confetti-canvas" id="confettiCanvas" aria-hidden="true"></canvas>
@@ -46,7 +46,7 @@
           <div class="survey-copy">
             <p class="eyebrow">BODY PALETTE ENTRY FORM</p>
             <h1 id="surveyTitle">アンケートにご回答ください</h1>
-            <p>送信後、そのまま特典抽選ルーレットへ進みます。</p>
+            <p>送信後、特典抽選へ進みます。</p>
           </div>
 
           <div class="survey-visual" aria-hidden="true">
@@ -69,8 +69,91 @@
               <input id="email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="name@example.com">
             </label>
 
+            <fieldset class="question-field">
+              <legend>満足度を教えて下さい</legend>
+              <div class="rating-options">
+                <label>
+                  <input type="radio" name="satisfaction" value="5" required>
+                  <span>5</span>
+                </label>
+                <label>
+                  <input type="radio" name="satisfaction" value="4">
+                  <span>4</span>
+                </label>
+                <label>
+                  <input type="radio" name="satisfaction" value="3">
+                  <span>3</span>
+                </label>
+                <label>
+                  <input type="radio" name="satisfaction" value="2">
+                  <span>2</span>
+                </label>
+                <label>
+                  <input type="radio" name="satisfaction" value="1">
+                  <span>1</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="question-field">
+              <legend>従業員の健康課題に対して、現在どの程度取り組まれていますか？</legend>
+              <div class="choice-options">
+                <label>
+                  <input type="radio" name="healthAction" value="十分に取り組んでおり、健康経営優良法人認定も取得している" required>
+                  <span>十分に取り組んでおり、健康経営優良法人認定も取得している</span>
+                </label>
+                <label>
+                  <input type="radio" name="healthAction" value="取り組んでいるが、十分な成果につながっていない">
+                  <span>取り組んでいるが、十分な成果につながっていない</span>
+                </label>
+                <label>
+                  <input type="radio" name="healthAction" value="取り組んでいるが、新たな施策に課題を感じている">
+                  <span>取り組んでいるが、新たな施策に課題を感じている</span>
+                </label>
+                <label>
+                  <input type="radio" name="healthAction" value="取り組みたいが、まだ着手できていない">
+                  <span>取り組みたいが、まだ着手できていない</span>
+                </label>
+                <label>
+                  <input type="radio" name="healthAction" value="現時点では取り組んでいない">
+                  <span>現時点では取り組んでいない</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="question-field">
+              <legend>自社の健康経営の取り組みに満足しているか？</legend>
+              <div class="choice-options">
+                <label>
+                  <input type="radio" name="healthSatisfaction" value="満足している" required>
+                  <span>満足している</span>
+                </label>
+                <label>
+                  <input type="radio" name="healthSatisfaction" value="やや満足している">
+                  <span>やや満足している</span>
+                </label>
+                <label>
+                  <input type="radio" name="healthSatisfaction" value="どちらともいえない">
+                  <span>どちらともいえない</span>
+                </label>
+                <label>
+                  <input type="radio" name="healthSatisfaction" value="やや不満である">
+                  <span>やや不満である</span>
+                </label>
+                <label>
+                  <input type="radio" name="healthSatisfaction" value="不満である">
+                  <span>不満である</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <label class="form-field">
+              <span>本セミナーに対してご意見・ご要望がございましたら、ご自由にお書きください。 <small>任意</small></span>
+              <textarea id="seminarFeedback" name="seminarFeedback" rows="4" placeholder="ご意見・ご要望をご入力ください"></textarea>
+            </label>
+
             <button class="submit-button" id="surveySubmit" type="submit">
-              回答してルーレットへ
+              回答へ進む
             </button>
             <p class="form-status" id="formStatus" aria-live="polite"></p>
           </form>
@@ -210,6 +293,6 @@
       </div>
     </div>
 
-    <script src="./app.js?v=20260613-survey-live"></script>
+    <script src="./app.js?v=20260614-survey-v2"></script>
   </body>
 </html>
