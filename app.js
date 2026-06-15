@@ -132,8 +132,32 @@ function showRoulette(mode) {
   setSpinAvailability();
   if (mode === "demo") {
     setStatus("デモ保存が完了しました。中央のボタンをタップしてください。");
+  } else if (mode === "preview") {
+    setStatus("プレビュー表示です。中央のボタンをタップすると抽選演出を確認できます。");
   }
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showWinnerPreview() {
+  showRoulette("preview");
+  isSpinning = false;
+  hasResult = true;
+  spinButton.disabled = true;
+  resultTicket.hidden = false;
+  stage.classList.add("is-winner");
+  highlightPrize(forcedPrizeId);
+  setStatus("カスタムセッションが当選しました。");
+  victoryOverlay.classList.add("is-visible");
+  victoryOverlay.setAttribute("aria-hidden", "false");
+}
+
+function applyPreviewMode() {
+  const previewMode = new URLSearchParams(window.location.search).get("preview");
+  if (previewMode === "winner") {
+    showWinnerPreview();
+  } else if (previewMode === "roulette") {
+    showRoulette("preview");
+  }
 }
 
 async function handleSurveySubmit(event) {
@@ -280,3 +304,4 @@ window.addEventListener("resize", setCanvasSize);
 
 setCanvasSize();
 setSpinAvailability();
+applyPreviewMode();
