@@ -1278,31 +1278,37 @@ a {
   z-index: 24;
   display: grid;
   place-items: center;
-  padding: 20px;
+  padding: 18px;
   pointer-events: none;
   opacity: 0;
   visibility: hidden;
   background:
-    radial-gradient(circle at 50% 45%, rgba(255, 161, 94, 0.22), transparent 38%),
-    rgba(255, 248, 251, 0.28);
+    radial-gradient(circle at 50% 30%, rgba(255, 161, 94, 0.24), transparent 36%),
+    rgba(255, 248, 251, 0.78);
+  backdrop-filter: blur(8px);
   transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
 .victory-overlay.is-visible {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 .victory-card {
-  width: min(100%, 360px);
-  padding: 32px 22px;
+  display: grid;
+  gap: 14px;
+  width: min(100%, 390px);
+  max-height: calc(100svh - 36px);
+  padding: 24px 20px 20px;
+  overflow: auto;
   border: 1px solid rgba(220, 74, 137, 0.2);
   border-radius: var(--radius);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 244, 223, 0.98)),
     #fff;
   color: var(--ink);
-  text-align: center;
+  text-align: left;
   box-shadow: 0 24px 68px rgba(212, 33, 95, 0.28);
   transform: scale(0.88);
 }
@@ -1311,7 +1317,7 @@ a {
   animation: winnerPop 1.12s var(--ease-out) both;
 }
 
-.victory-card p {
+.victory-kicker {
   margin: 0;
   color: var(--pink-strong);
   font-family: var(--font-en);
@@ -1321,58 +1327,49 @@ a {
   text-transform: uppercase;
 }
 
-.victory-card strong {
-  display: block;
-  margin: 8px 0;
-  color: var(--ink);
-  font-size: 40px;
-  font-weight: 800;
-  line-height: 1.02;
-}
-
-.victory-card span {
-  color: var(--blue);
-  font-size: 17px;
-  font-weight: 700;
-}
-
-.victory-session {
-  display: grid;
-  gap: 10px;
-  margin-top: 18px;
-  padding: 10px;
-  border: 1px solid rgba(220, 74, 137, 0.16);
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.82);
-  text-align: left;
-}
-
-.victory-session img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 464 / 270;
-  object-fit: contain !important;
-  object-position: center;
-  background: linear-gradient(135deg, #fff 0%, #fff8fb 100%);
-  border-radius: 6px;
-}
-
-.victory-session h2 {
-  margin: 0 0 5px;
-  color: var(--pink-strong);
-  font-size: 16px;
-  font-weight: 800;
-  line-height: 1.35;
-}
-
-.victory-session p {
+.victory-card h2 {
   margin: 0;
   color: var(--ink);
-  font-size: 12px;
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 1.38;
+  text-wrap: balance;
+}
+
+.victory-message {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid rgba(220, 74, 137, 0.14);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.victory-message p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0;
-  line-height: 1.6;
+  line-height: 1.75;
   text-transform: none;
+}
+
+.victory-close {
+  display: grid;
+  place-items: center;
+  min-height: 48px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(243deg, #ffa15e 0.14%, #db4a89 50.59%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 900;
+  box-shadow: 0 14px 28px rgba(220, 74, 137, 0.22);
+}
+
+.victory-close:active {
+  transform: scale(0.98);
 }
 
 @keyframes swingBeam {
@@ -1484,9 +1481,6 @@ a {
     font-size: 11px;
   }
 
-  .victory-card strong {
-    font-size: 36px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -26,7 +26,6 @@ const prizes = [
 
 const forcedPrizeId = "custom-session";
 const spinDurationMs = 5900;
-const victoryOverlayDurationMs = 5200;
 
 const surveyScreen = document.querySelector("#surveyScreen");
 const rouletteScreen = document.querySelector("#rouletteScreen");
@@ -40,6 +39,7 @@ const surveyCheck = document.querySelector("#surveyCheck");
 const statusText = document.querySelector("#statusText");
 const resultTicket = document.querySelector("#resultTicket");
 const victoryOverlay = document.querySelector("#victoryOverlay");
+const victoryCloseButton = document.querySelector("#victoryCloseButton");
 const prizeList = document.querySelector("#prizeList");
 const canvas = document.querySelector("#confettiCanvas");
 const ctx = canvas.getContext("2d");
@@ -166,6 +166,7 @@ function startSpin() {
   spinButton.disabled = true;
   resultTicket.hidden = true;
   victoryOverlay.classList.remove("is-visible");
+  victoryOverlay.setAttribute("aria-hidden", "true");
   stage.classList.remove("is-winner");
   stage.classList.add("is-spinning");
   highlightPrize("");
@@ -192,13 +193,15 @@ function revealForcedPrize() {
   setStatus(`${prize.name}が当選しました。`);
 
   victoryOverlay.classList.add("is-visible");
+  victoryOverlay.setAttribute("aria-hidden", "false");
   burstConfetti(260);
   vibrateWin();
+}
 
-  window.setTimeout(() => {
-    victoryOverlay.classList.remove("is-visible");
-    resultTicket.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, victoryOverlayDurationMs);
+function closeVictoryOverlay() {
+  victoryOverlay.classList.remove("is-visible");
+  victoryOverlay.setAttribute("aria-hidden", "true");
+  resultTicket.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function vibrateWin() {
@@ -272,6 +275,7 @@ function drawConfetti() {
 
 surveyForm.addEventListener("submit", handleSurveySubmit);
 spinButton.addEventListener("click", startSpin);
+victoryCloseButton.addEventListener("click", closeVictoryOverlay);
 window.addEventListener("resize", setCanvasSize);
 
 setCanvasSize();

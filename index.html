@@ -12,7 +12,7 @@
     <link rel="preload" as="image" href="./assets/body-palette-logo.webp">
     <link rel="preload" as="image" href="./assets/body-palette-fv-bg.webp">
     <link rel="preload" as="image" href="./assets/body-palette-program-overview.png">
-    <link rel="stylesheet" href="./styles.css?v=20260615-survey-v6">
+    <link rel="stylesheet" href="./styles.css?v=20260616-winner-popup-v7">
   </head>
   <body>
     <canvas class="confetti-canvas" id="confettiCanvas" aria-hidden="true"></canvas>
@@ -305,19 +305,18 @@
 
     <div class="victory-overlay" id="victoryOverlay" aria-hidden="true">
       <div class="victory-card">
-        <p>SPECIAL WINNER</p>
-        <strong>カスタムセッション</strong>
-        <span>おめでとうございます</span>
-        <div class="victory-session">
-          <img src="./assets/body-palette-custom-session.webp" alt="カスタムセッションのオンライン指導の様子">
-          <div>
-            <h2>カスタムセッションとは</h2>
-            <p>業種・働き方・参加者層に合わせて、BODY PALETTEがテーマを設計する企業専用セッションです。</p>
-          </div>
+        <p class="victory-kicker">LIMITED BENEFIT</p>
+        <h2>カスタムセッション当選おめでとうございます！</h2>
+        <div class="victory-message">
+          <p>本日はセミナーにご参加いただき、誠にありがとうございました。</p>
+          <p>カスタムセッションでは、貴社の健康課題や取り組み状況に合わせて、最適なテーマをご提案いたします。</p>
+          <p>実施に向けた事前のお打ち合わせについて、後日ご連絡いたします。</p>
+          <p>健康経営の推進にも活用いただける限定特典ですので、ぜひお役立てください。</p>
         </div>
+        <button class="victory-close" id="victoryCloseButton" type="button">確認しました</button>
       </div>
     </div>
 
-    <script src="./app.js?v=20260615-survey-v6"></script>
+    <script src="./app.js?v=20260616-winner-popup-v7"></script>
   </body>
 </html>
