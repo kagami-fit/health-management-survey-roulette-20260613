@@ -1336,6 +1336,22 @@ a {
   text-wrap: balance;
 }
 
+.victory-photo {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(220, 74, 137, 0.14);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, #fff 0%, #fff8fb 100%);
+}
+
+.victory-photo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 464 / 270;
+  object-fit: contain;
+  object-position: center;
+}
+
 .victory-message {
   display: grid;
   gap: 10px;
